@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+import javax.mail.MessagingException;
 import javax.xml.ws.Response;
 import java.time.LocalDate;
 
@@ -20,10 +21,17 @@ public class BusController {
 
 
     @RequestMapping("/alertUser")
-    public ResponseEntity alertUser(@RequestParam("date")@DateTimeFormat(pattern = "dd-MM-yyyy") LocalDate date, @RequestParam("time")String time){
 
-        busService.alertUser(date);
-        return new ResponseEntity(HttpStatus.OK);
+
+    public ResponseEntity alertUser(@RequestParam("date") @DateTimeFormat(pattern = "dd-MM-yyyy") LocalDate date, @RequestParam("time") String time) {
+        try {
+
+            busService.alertUser(date);
+            return new ResponseEntity(HttpStatus.OK);
+        } catch (MessagingException exception) {
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
+
 
 }
