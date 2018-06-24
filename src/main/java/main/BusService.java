@@ -35,7 +35,7 @@ public void alertUser (LocalDate  date) throws MessagingException {
     public Integer getAvailableSeats(LocalDate date)
     {
         RestTemplate restTemplate= new RestTemplate();
-        BusTicketResponse busTicketResponse = restTemplate.getForObject("https://busapi.mobikwik.com/api/v2/availability/5042/6727/" + date, BusTicketResponse.class);
+        BusTicketResponse busTicketResponse = restTemplate.getForObject("" + date, BusTicketResponse.class);
         List<SearchResult> search_results = busTicketResponse.getData().getSearch_results();
         SearchResult searchResult = search_results.stream().filter(result -> result.getDep_time().equals("19:30")).findFirst().get();
         return searchResult.getAvailable_seat_count();
