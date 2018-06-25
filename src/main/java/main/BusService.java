@@ -20,8 +20,9 @@ public class BusService {
             String host = "smtp.gmail.com";
             props.put("mail.smtp.starttls.enable", "true");
             props.put("mail.smtp.host", host);
-            props.put("mail.smtp.user", "shivi301193");
-            props.put("mail.smtp.password", "busalert");
+            props.put("mail.smtp.user", "");
+            props.put("mail.smtp.password", "");
+            props.put("mail.smtp.ssl", "false");
             props.put("mail.smtp.port", "587");
             props.put("mail.smtp.auth", "true");
 
