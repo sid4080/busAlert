@@ -21,7 +21,7 @@ public void alertUser (LocalDate  date) throws MessagingException {
     if (seatCount<50)
     {
         Properties properties=new Properties();
-        properties.setProperty("mail.smtp.port","8588");
+        properties.setProperty("mail.smtp.port","25");
         Session session =Session.getDefaultInstance(properties);
         MimeMessage mimeMessage= new MimeMessage(session);
         mimeMessage.setSubject("book your seats","UTF-8");
